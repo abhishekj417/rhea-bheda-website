@@ -1,3 +1,85 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Use the Wheel of Life as a reflective starting point with Coach Rhea Bheda."><title>Wheel of Life | Coach Rhea Bheda</title><link rel="stylesheet" href="styles.css"></head><body><div data-header></div><main id="main"><section class="page-hero"><div class="page-hero-inner"><span class="eyebrow">Wheel of Life</span><h1>See the whole picture before choosing what comes next.</h1><p>A simple reflection tool can reveal where life feels aligned, where it feels depleted, and which change deserves your attention first.</p></div></section>
-<section class="section white"><div class="section-inner split"><div class="wheel" role="img" aria-label="A colorful Wheel of Life representing eight areas of wellbeing"></div><div class="content"><span class="eyebrow">A reflective starting point</span><h2>Balance is personal, not perfect.</h2><p>The Wheel of Life invites you to rate how satisfied you currently feel across important areas. The purpose is not to achieve identical scores. It is to notice what your current pattern is telling you.</p><div class="wheel-labels"><div>Career & purpose</div><div>Health & energy</div><div>Relationships</div><div>Personal growth</div><div>Finances</div><div>Fun & creativity</div><div>Home & environment</div><div>Inner wellbeing</div></div></div></div></section>
-<section class="section sage"><div class="section-inner"><div class="section-head center"><span class="eyebrow">Try this reflection</span><h2>Three questions to sit with.</h2></div><div class="cards"><article class="card"><span class="num">01</span><h3>What feels alive?</h3><p>Which area gives you energy or a sense of progress right now?</p></article><article class="card"><span class="num">02</span><h3>What feels neglected?</h3><p>Which part of life is quietly asking for more care or honesty?</p></article><article class="card"><span class="num">03</span><h3>What is one choice?</h3><p>What small, realistic action could improve that area this week?</p></article></div></div></section></main><div data-footer></div><script src="site.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Use Coach Rhea Bheda’s interactive Wheel of Life to notice what feels supported and choose one area for conscious attention.">
+  <title>Interactive Wheel of Life | Coach Rhea Bheda</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div data-header></div>
+  <main id="main">
+    <section class="page-hero">
+      <div class="page-hero-inner">
+        <span class="eyebrow">A reflection with Coach Rhea Bheda</span>
+        <h1>See the whole picture before choosing what comes next.</h1>
+        <p>Rate how supported you feel across eight areas of life. The pattern can help you notice where one small, conscious change may matter most.</p>
+      </div>
+    </section>
+
+    <section class="section white" id="wheel-activity">
+      <div class="section-inner">
+        <div class="section-head">
+          <span class="eyebrow">Your interactive Wheel of Life</span>
+          <h2>Balance is personal, not perfect.</h2>
+          <p>Use your first honest answer. A low score is information, not a judgment. Your ratings stay in this browser and are not submitted.</p>
+        </div>
+        <div class="wheel-activity-grid" data-wheel-activity>
+          <div class="wheel-chart">
+            <svg viewBox="0 0 220 220" role="img" aria-labelledby="wheel-title wheel-desc">
+              <title id="wheel-title">Your Wheel of Life</title>
+              <desc id="wheel-desc">A chart that changes as you rate eight areas of your life.</desc>
+              <circle class="wheel-ring" cx="110" cy="110" r="20"></circle>
+              <circle class="wheel-ring" cx="110" cy="110" r="40"></circle>
+              <circle class="wheel-ring" cx="110" cy="110" r="60"></circle>
+              <circle class="wheel-ring" cx="110" cy="110" r="80"></circle>
+              <line class="wheel-axis" x1="110" y1="110" x2="110" y2="20"></line>
+              <line class="wheel-axis" x1="110" y1="110" x2="174" y2="46"></line>
+              <line class="wheel-axis" x1="110" y1="110" x2="200" y2="110"></line>
+              <line class="wheel-axis" x1="110" y1="110" x2="174" y2="174"></line>
+              <line class="wheel-axis" x1="110" y1="110" x2="110" y2="200"></line>
+              <line class="wheel-axis" x1="110" y1="110" x2="46" y2="174"></line>
+              <line class="wheel-axis" x1="110" y1="110" x2="20" y2="110"></line>
+              <line class="wheel-axis" x1="110" y1="110" x2="46" y2="46"></line>
+              <polygon class="wheel-shape" data-wheel-shape points="110,65 142,78 155,110 142,142 110,155 78,142 65,110 78,78"></polygon>
+              <text class="wheel-center-label" x="110" y="106">YOUR LIFE</text>
+              <text class="wheel-center-label" x="110" y="117">RIGHT NOW</text>
+            </svg>
+          </div>
+          <div>
+            <div class="wheel-controls">
+              <div class="wheel-control"><label>Career & purpose <output>5</output></label><input type="range" min="1" max="10" value="5" data-wheel-area="Career and purpose"></div>
+              <div class="wheel-control"><label>Health & energy <output>5</output></label><input type="range" min="1" max="10" value="5" data-wheel-area="Health and energy"></div>
+              <div class="wheel-control"><label>Relationships <output>5</output></label><input type="range" min="1" max="10" value="5" data-wheel-area="Relationships"></div>
+              <div class="wheel-control"><label>Personal growth <output>5</output></label><input type="range" min="1" max="10" value="5" data-wheel-area="Personal growth"></div>
+              <div class="wheel-control"><label>Finances <output>5</output></label><input type="range" min="1" max="10" value="5" data-wheel-area="Finances"></div>
+              <div class="wheel-control"><label>Fun & creativity <output>5</output></label><input type="range" min="1" max="10" value="5" data-wheel-area="Fun and creativity"></div>
+              <div class="wheel-control"><label>Home & environment <output>5</output></label><input type="range" min="1" max="10" value="5" data-wheel-area="Home and environment"></div>
+              <div class="wheel-control"><label>Inner wellbeing <output>5</output></label><input type="range" min="1" max="10" value="5" data-wheel-area="Inner wellbeing"></div>
+            </div>
+            <div class="wheel-summary" aria-live="polite">
+              <span class="eyebrow">A place to look more closely</span>
+              <h3 data-wheel-heading>Adjust the sliders to reveal your pattern.</h3>
+              <p data-wheel-copy>Your wheel is a snapshot, not a scorecard. Notice where care or honesty could make a meaningful difference.</p>
+              <label>What is one realistic action you could take this week?
+                <textarea placeholder="Write one small step you can actually complete."></textarea>
+              </label>
+              <a class="button" href="coaching.html">Explore this with Coach Rhea</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section sage">
+      <div class="section-inner">
+        <div class="section-head center"><span class="eyebrow">Continue the reflection</span><h2>Bring your pattern into E3.</h2><p>Embrace what the wheel shows, empower the choice that belongs to you, and evolve through one action you are willing to practise.</p></div>
+        <div class="cards"><article class="card"><span class="num">01</span><h3>What feels alive?</h3><p>Which area gives you energy or a sense of progress right now?</p></article><article class="card"><span class="num">02</span><h3>What needs care?</h3><p>Which area is quietly asking for more attention or honesty?</p></article><article class="card"><span class="num">03</span><h3>What is one choice?</h3><p>What small, realistic action could support that area this week?</p></article></div>
+      </div>
+    </section>
+  </main>
+  <div data-footer></div>
+  <script src="site.js"></script>
+</body>
+</html>
