@@ -21,7 +21,7 @@ document.querySelector("[data-year]").textContent=new Date().getFullYear();
 const toggle=document.querySelector(".menu-toggle");const menu=document.querySelector(".nav-links");
 toggle.addEventListener("click",()=>{const open=!menu.classList.contains("open");menu.classList.toggle("open",open);document.body.classList.toggle("menu-open",open);toggle.setAttribute("aria-expanded",String(open));toggle.setAttribute("aria-label",open?"Close menu":"Open menu");toggle.textContent=open?"×":"☰"});
 document.addEventListener("keydown",event=>{if(event.key==="Escape"&&menu.classList.contains("open"))toggle.click()});
-document.querySelectorAll(".affirmation-card").forEach(card=>card.addEventListener("click",()=>{const flipped=!card.classList.contains("is-flipped");card.classList.toggle("is-flipped",flipped);card.setAttribute("aria-pressed",String(flipped))}));
+document.querySelectorAll(".affirmation-card").forEach(card=>{const front=card.querySelector(".card-front");const back=card.querySelector(".card-back");const setState=flipped=>{card.classList.toggle("is-flipped",flipped);card.setAttribute("aria-pressed",String(flipped));front.setAttribute("aria-hidden",String(flipped));back.setAttribute("aria-hidden",String(!flipped))};setState(false);card.addEventListener("click",()=>setState(!card.classList.contains("is-flipped")))});
 document.querySelectorAll(".faq-list details").forEach(item=>item.addEventListener("toggle",()=>{if(!item.open)return;document.querySelectorAll(".faq-list details").forEach(other=>{if(other!==item)other.open=false})}));
 
 const checkin=document.querySelector("[data-checkin]");
