@@ -15,9 +15,11 @@ document.querySelector("[data-footer]").innerHTML=`
 <footer class="site-footer"><div class="section-inner"><div class="footer-grid">
 <div><h3>Coach Rhea Bheda</h3><p>Transformation Coach, Yoga & Meditation Facilitator, and creator of the E3 Framework. Based in Dubai, working with clients globally.</p></div>
 <div><h3>Explore</h3><a href="about.html">About Rhea</a><a href="e3-method.html">The E3 Method</a><a href="coaching.html">Coaching</a><a href="programs.html">Programs</a></div>
-<div><h3>Continue</h3><a href="wheel-of-life.html">Wheel of Life</a><a href="testimonials.html">Client Stories</a><a href="insights.html">Insights & Media</a><a href="contact.html">Contact</a></div>
+<div><h3>Continue</h3><a href="wheel-of-life.html">Wheel of Life</a><a href="testimonials.html">Client Stories</a><a href="insights.html">Insights & Media</a><a href="index.html#faq">FAQs</a><a href="contact.html">Contact</a></div>
 </div><div class="footer-bottom">© <span data-year></span> Coach Rhea Bheda. All rights reserved.</div></div></footer>`;
 document.querySelector("[data-year]").textContent=new Date().getFullYear();
 const toggle=document.querySelector(".menu-toggle");const menu=document.querySelector(".nav-links");
 toggle.addEventListener("click",()=>{const open=!menu.classList.contains("open");menu.classList.toggle("open",open);document.body.classList.toggle("menu-open",open);toggle.setAttribute("aria-expanded",String(open));toggle.setAttribute("aria-label",open?"Close menu":"Open menu");toggle.textContent=open?"×":"☰"});
 document.addEventListener("keydown",event=>{if(event.key==="Escape"&&menu.classList.contains("open"))toggle.click()});
+document.querySelectorAll(".affirmation-card").forEach(card=>card.addEventListener("click",()=>{const flipped=!card.classList.contains("is-flipped");card.classList.toggle("is-flipped",flipped);card.setAttribute("aria-pressed",String(flipped))}));
+document.querySelectorAll(".faq-list details").forEach(item=>item.addEventListener("toggle",()=>{if(!item.open)return;document.querySelectorAll(".faq-list details").forEach(other=>{if(other!==item)other.open=false})}));
