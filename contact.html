@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Prepare to contact Coach Rhea Bheda about transformation coaching. Verified enquiry details are coming soon.">
+  <meta name="description" content="Contact Coach Rhea Bheda about E3 transformation coaching.">
   <title>Contact Coach Rhea Bheda</title>
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -12,11 +12,22 @@
   <main id="main">
     <section class="page-hero"><div class="page-hero-inner"><span class="eyebrow">Contact Coach Rhea Bheda</span><h1>Begin with an honest conversation.</h1><p>Share what keeps repeating, what you want to understand, and what you would like to practise differently.</p></div></section>
     <section class="section"><div class="section-inner contact-grid">
-      <div class="content"><span class="eyebrow">Based in Dubai · working globally</span><h2>Your next chapter can begin with one clear step.</h2><p>Rhea’s verified email, phone, WhatsApp and social links are still being prepared. The enquiry channel will open here once those details and the privacy wording are confirmed.</p><div class="notice"><strong>Enquiries opening soon.</strong><br>Until then, use the starting-point check-in or the E3 practice to clarify what you would like support with.</div><p><a class="button secondary" href="index.html#check-in">Find your starting point</a></p></div>
-      <div class="contact-panel"><h2>Prepare your enquiry</h2><p>You can use these prompts to organise your thoughts. This form does not submit or store your answers yet.</p><form class="demo-form"><label class="field">Name<input type="text" autocomplete="name" placeholder="Your name"></label><label class="field">Email<input type="email" autocomplete="email" placeholder="you@example.com"></label><label class="field">What would you like support with?<select><option>Choose an area</option><option>Clarity and direction</option><option>Emotional patterns</option><option>Boundaries and confidence</option><option>Personal growth</option></select></label><label class="field">What would you like to understand or change?<textarea placeholder="Tell Rhea a little about what brings you here"></textarea></label><button class="button" type="button" disabled aria-disabled="true">Enquiries opening soon</button></form></div>
+      <div class="content"><span class="eyebrow">Based in Dubai · working globally</span><h2>Your next chapter can begin with one clear step.</h2><p>This enquiry goes directly to Coach Rhea Bheda. Share only what you are comfortable discussing by email. Your details are used to respond to this enquiry and are not displayed publicly.</p><div class="notice"><strong>Not sure what to write?</strong><br>Start with the pattern you want to change, how it affects your life now, and what a meaningful shift would look like.</div><p><a class="button secondary" href="index.html#check-in">Find your starting point</a></p></div>
+      <div class="contact-panel"><h2>Send an enquiry</h2><p>Complete all four fields. Rhea will receive your message by email.</p>
+        <form class="enquiry-form" data-contact-form novalidate>
+          <label class="field">Name<input name="name" type="text" autocomplete="name" maxlength="120" required placeholder="Your name"></label>
+          <label class="field">Email<input name="email" type="email" autocomplete="email" maxlength="254" required placeholder="you@example.com"></label>
+          <label class="field">What would you like support with?<select name="area" required><option value="">Choose an area</option><option>Clarity and direction</option><option>Emotional patterns</option><option>Boundaries and confidence</option><option>Personal growth</option></select></label>
+          <label class="field">What would you like to understand or change?<textarea name="message" maxlength="6000" required placeholder="Tell Rhea a little about what brings you here"></textarea></label>
+          <label class="contact-honeypot" aria-hidden="true">Website<input name="website" type="text" tabindex="-1" autocomplete="off"></label>
+          <button class="button" type="submit" disabled>Checking availability…</button>
+          <p class="form-status" data-form-status role="status" aria-live="polite">Checking whether enquiries are open.</p>
+        </form>
+      </div>
     </div></section>
   </main>
   <div data-footer></div>
   <script src="site.js"></script>
+  <script src="contact.js"></script>
 </body>
 </html>

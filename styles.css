@@ -63,3 +63,8 @@
   .signal{font-size:9px}.home-hero h1{font-size:49px}.identity-stage{min-height:440px}.identity-photo{width:82%}.note-bottom{bottom:50px}.pathway-card h3{font-size:29px}.e3-editorial-card{grid-template-columns:1fr;gap:12px}.pip-stage{min-height:660px}.feature-video-placeholder{height:410px}.reel-pip{top:315px;height:325px}.practice-pip{bottom:3px}.manifesto-visual{transform:scale(.88);margin:-30px}.library-reel{width:56%}.library-feature .media-caption{left:22px}.testimonial-pip{width:62%}
 }
 .center-action{margin:32px 0 0;text-align:center}
+
+/* Live enquiry form and approved media embeds */
+.contact-honeypot{position:absolute!important;left:-10000px!important;width:1px!important;height:1px!important;overflow:hidden!important}
+.form-status{margin:14px 0 0;color:#60747b;font-size:13px}.form-status[data-state="success"]{color:#176f69;font-weight:800}.form-status[data-state="error"]{color:#a33b2d}.form-status[data-state="unavailable"]{color:#806528}.enquiry-form button[disabled]{cursor:not-allowed;opacity:.62}
+.media-embed-shell{overflow:hidden;background:#0d293a}.media-embed-shell iframe,.reel-card-screen iframe{width:100%;height:100%;display:block;border:0}.feature-video-placeholder.media-embed-shell,.library-feature.media-embed-shell,.testimonial-main-video.media-embed-shell{padding:0}.reel-pip.media-embed-shell,.library-reel.media-embed-shell,.testimonial-pip.media-embed-shell{padding:0}.reel-card-screen{background:#0d293a}.reel-card-screen::after{display:none}.media-actions a:not(.button){color:#17354a;font-size:13px;font-weight:800;text-decoration:underline;text-underline-offset:3px}
