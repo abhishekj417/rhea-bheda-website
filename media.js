@@ -3,6 +3,26 @@
   if (!frames.length) return;
 
   const players = [];
+  const playersByVideo = new Map();
+  document.querySelectorAll('.video-poster img[data-fallback]').forEach(image => {
+    image.addEventListener('error', () => {
+      if (image.src !== image.dataset.fallback) image.src = image.dataset.fallback;
+    });
+  });
+
+  document.querySelectorAll('[data-play-video]').forEach(button => {
+    button.addEventListener('click', () => {
+      const shell = button.closest('.media-embed-shell');
+      if (shell) shell.dataset.playRequested = 'true';
+      const player = playersByVideo.get(button.dataset.playVideo);
+      if (!player) return;
+      players.forEach(other => { if (other !== player && other.getPlayerState() === YT.PlayerState.PLAYING) other.pauseVideo(); });
+      player.unMute();
+      player.setVolume(100);
+      player.playVideo();
+    });
+  });
+
   const initialisePlayers = () => {
     frames.forEach(frame => {
       const shell = frame.closest('.media-embed-shell, .reel-card-screen');
@@ -10,6 +30,10 @@
         events: {
           onReady(event) {
             event.target.setVolume(100);
+            if (shell?.dataset.playRequested === 'true') {
+              event.target.unMute();
+              event.target.playVideo();
+            }
           },
           onStateChange(event) {
             if (event.data !== YT.PlayerState.PLAYING) return;
@@ -29,6 +53,7 @@
         }
       });
       players.push(player);
+      playersByVideo.set(frame.dataset.videoId, player);
     });
   };
 
