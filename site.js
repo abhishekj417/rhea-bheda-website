@@ -39,7 +39,7 @@ if(checkin){
   };
   const showStep=step=>{patternStep.hidden=step!=="pattern";desireStep.hidden=step!=="desire";result.hidden=step!=="result";progress.forEach((item,index)=>item.classList.toggle("is-active",index===(step==="pattern"?0:step==="desire"?1:2)))};
   checkin.querySelectorAll("[data-pattern]").forEach(button=>button.addEventListener("click",()=>{selectedPattern=button.dataset.pattern;showStep("desire")}));
-  checkin.querySelectorAll("[data-desire]").forEach(button=>button.addEventListener("click",()=>{const item=patterns[selectedPattern];const desire=button.textContent.trim().toLowerCase();checkin.querySelector("[data-checkin-title]").textContent=item.title;checkin.querySelector("[data-checkin-copy]").textContent=`${item.copy} You chose ${desire} as the quality you want more of.`;checkin.querySelector("[data-checkin-link]").href=item.link;showStep("result")}));
+  checkin.querySelectorAll("[data-desire]").forEach(button=>button.addEventListener("click",()=>{const item=patterns[selectedPattern];const desire=button.dataset.desire;checkin.querySelector("[data-checkin-title]").textContent=item.title;checkin.querySelector("[data-checkin-copy]").textContent=`${item.copy} Your focus is ${desire}. Use that to guide your next step.`;checkin.querySelector("[data-checkin-link]").href=item.link;showStep("result")}));
   checkin.querySelector("[data-checkin-back]").addEventListener("click",()=>showStep("pattern"));
   checkin.querySelector("[data-checkin-reset]").addEventListener("click",()=>{selectedPattern="";showStep("pattern")});
 }
