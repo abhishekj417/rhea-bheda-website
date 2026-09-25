@@ -3,6 +3,16 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/testimonials",
+      "destination": "/insights#client-stories",
+      "permanent": true
+    },
+    {
+      "source": "/testimonials.html",
+      "destination": "/insights#client-stories",
+      "permanent": true
+    },
+    {
       "source": "/(.*)",
       "has": [{ "type": "host", "value": "rhea-bheda-website.vercel.app" }],
       "destination": "https://coachrheabheda.com/$1",

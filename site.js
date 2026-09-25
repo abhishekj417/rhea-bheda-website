@@ -1,5 +1,5 @@
 const icon=document.createElement("link");icon.rel="icon";icon.href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 rx=%2214%22 fill=%22%2317354a%22/><text x=%2232%22 y=%2241%22 text-anchor=%22middle%22 font-size=%2230%22 font-family=%22Georgia%22 fill=%22%23f1ca76%22>E3</text></svg>";document.head.append(icon);
-const pages=[["Home","index.html"],["About Rhea","about.html"],["Rhea’s E3 Framework","e3-method.html"],["Coaching","coaching.html"],["Programs","programs.html"],["Wheel of Life","wheel-of-life.html"],["Client Stories","testimonials.html"],["Insights & Media","insights.html"],["Contact","contact.html"]];
+const pages=[["Home","index.html"],["About Rhea","about.html"],["Rhea’s E3 Framework","e3-method.html"],["Coaching","coaching.html"],["Programs","programs.html"],["Wheel of Life","wheel-of-life.html"],["Stories & Media","insights.html"],["Contact","contact.html"]];
 const current=location.pathname.split("/").pop()||"index.html";
 const nav=pages.map(([label,href])=>`<a href="${href}"${href===current?' class="active" aria-current="page"':""}>${label}</a>`).join("");
 document.querySelector("[data-header]").innerHTML=`
@@ -15,7 +15,7 @@ document.querySelector("[data-footer]").innerHTML=`
 <footer class="site-footer"><div class="section-inner"><div class="footer-grid">
 <div><h3>Coach Rhea Bheda</h3><p>Transformation Coach, Yoga & Meditation Facilitator, and creator of the E3 Transformation Framework. Based in Dubai, working with clients globally.</p></div>
 <div><h3>Explore</h3><a href="about.html">About Rhea</a><a href="e3-method.html">Rhea’s E3 Framework</a><a href="coaching.html">Coaching</a><a href="programs.html">Programs</a></div>
-<div><h3>Continue</h3><a href="wheel-of-life.html">Wheel of Life</a><a href="testimonials.html">Client Stories</a><a href="insights.html">Insights & Media</a><a href="index.html#faq">FAQs</a><a href="contact.html">Contact</a></div>
+<div><h3>Continue</h3><a href="wheel-of-life.html">Wheel of Life</a><a href="insights.html#client-stories">Client Stories</a><a href="insights.html">Insights & Media</a><a href="index.html#faq">FAQs</a><a href="contact.html">Contact</a></div>
 </div><div class="footer-bottom">© <span data-year></span> Coach Rhea Bheda. All rights reserved.</div></div></footer>`;
 document.querySelector("[data-year]").textContent=new Date().getFullYear();
 const toggle=document.querySelector(".menu-toggle");const menu=document.querySelector(".nav-links");
