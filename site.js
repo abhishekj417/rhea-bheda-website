@@ -1,11 +1,11 @@
 const icon=document.createElement("link");icon.rel="icon";icon.href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 rx=%2214%22 fill=%22%2317354a%22/><text x=%2232%22 y=%2241%22 text-anchor=%22middle%22 font-size=%2230%22 font-family=%22Georgia%22 fill=%22%23f1ca76%22>E3</text></svg>";document.head.append(icon);
-const pages=[["Home","index.html"],["About Rhea","about.html"],["Rhea’s E3 Framework","e3-method.html"],["Coaching","coaching.html"],["Programs","programs.html"],["Wheel of Life","wheel-of-life.html"],["Stories & Media","insights.html"],["Contact","contact.html"]];
+const pages=[["Home","index.html"],["About Rhea","about.html"],["Rhea’s E3 Framework","e3-method.html"],["Coaching & Programs","programs.html"],["Resources","wheel-of-life.html"],["Stories & Media","insights.html"],["Contact","contact.html"]];
 const current=location.pathname.split("/").pop()||"index.html";
 const nav=pages.map(([label,href])=>`<a href="${href}"${href===current?' class="active" aria-current="page"':""}>${label}</a>`).join("");
 document.querySelector("[data-header]").innerHTML=`
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header"><div class="nav-wrap">
-<a class="brand" href="index.html" aria-label="Coach Rhea Bheda home"><strong>Coach Rhea Bheda</strong><span>Transformation Coach · Creator of E3</span></a>
+<a class="brand" href="index.html" aria-label="Coach Rhea Bheda home"><strong>Coach Rhea Bheda</strong><span>Transformation Coach</span></a>
 <nav class="nav-links" id="site-nav" aria-label="Primary navigation">${nav}</nav>
 <a class="nav-cta" href="index.html#check-in">Find your starting point</a>
 <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">☰</button>
@@ -14,8 +14,8 @@ document.querySelector("[data-footer]").innerHTML=`
 <section class="cta-strip" aria-labelledby="cta-title"><div class="section-inner"><div><h2 id="cta-title">Start with one honest reflection.</h2><p>Notice what keeps repeating, name what you need, and choose one useful next step.</p></div><a class="button" href="index.html#check-in">Find your starting point</a></div></section>
 <footer class="site-footer"><div class="section-inner"><div class="footer-grid">
 <div><h3>Coach Rhea Bheda</h3><p>Transformation Coach, Yoga & Meditation Facilitator, and creator of the E3 Transformation Framework. Based in Dubai, working with clients globally.</p></div>
-<div><h3>Explore</h3><a href="about.html">About Rhea</a><a href="e3-method.html">Rhea’s E3 Framework</a><a href="coaching.html">Coaching</a><a href="programs.html">Programs</a></div>
-<div><h3>Continue</h3><a href="wheel-of-life.html">Wheel of Life</a><a href="insights.html#client-stories">Client Stories</a><a href="insights.html">Insights & Media</a><a href="index.html#faq">FAQs</a><a href="contact.html">Contact</a></div>
+<div><h3>Explore</h3><a href="about.html">About Rhea</a><a href="e3-method.html">Rhea’s E3 Framework</a><a href="programs.html">Coaching & Programs</a></div>
+<div><h3>Continue</h3><a href="wheel-of-life.html">Resources</a><a href="insights.html#client-stories">Client Stories</a><a href="insights.html">Insights & Media</a><a href="index.html#faq">FAQs</a><a href="contact.html">Contact</a></div>
 </div><div class="footer-bottom">© <span data-year></span> Coach Rhea Bheda. All rights reserved.</div></div></footer>`;
 document.querySelector("[data-year]").textContent=new Date().getFullYear();
 const toggle=document.querySelector(".menu-toggle");const menu=document.querySelector(".nav-links");
@@ -32,7 +32,7 @@ if(checkin){
   const progress=[...checkin.querySelectorAll(".checkin-progress span")];
   let selectedPattern="";
   const patterns={
-    overthinking:{title:"Create space between uncertainty and decision.",copy:"You may not need more information. You may need a steadier way to hear what you already know. Coach Rhea’s E3 Framework can help you notice the story beneath the overthinking, identify what is yours to choose, and practise one clear response.",link:"coaching.html"},
+    overthinking:{title:"Create space between uncertainty and decision.",copy:"You may not need more information. You may need a steadier way to hear what you already know. Coach Rhea’s E3 Framework can help you notice the story beneath the overthinking, identify what is yours to choose, and practise one clear response.",link:"programs.html#coaching"},
     reaction:{title:"Build a pause before the response.",copy:"Strong emotions carry information, but they do not have to make every decision. E3 helps you acknowledge what is present, reclaim your choice, and rehearse a response you can respect later.",link:"e3-method.html#e3-practice"},
     boundaries:{title:"Make room for an honest yes or no.",copy:"A boundary often begins by recognising what you feel and need. Through E3, you can meet the discomfort without judgment, own the choice available to you, and practise clearer language.",link:"e3-method.html#e3-practice"},
     direction:{title:"Listen for what matters beneath the momentum.",copy:"When life is full, clarity can get buried under expectations and habit. The Wheel of Life can help you see the wider pattern before you decide what deserves attention first.",link:"wheel-of-life.html#wheel-activity"}

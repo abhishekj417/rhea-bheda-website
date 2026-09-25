@@ -13,6 +13,16 @@
       "permanent": true
     },
     {
+      "source": "/coaching",
+      "destination": "/programs#coaching",
+      "permanent": true
+    },
+    {
+      "source": "/coaching.html",
+      "destination": "/programs#coaching",
+      "permanent": true
+    },
+    {
       "source": "/(.*)",
       "has": [{ "type": "host", "value": "rhea-bheda-website.vercel.app" }],
       "destination": "https://coachrheabheda.com/$1",
@@ -24,8 +34,14 @@
       "source": "/(.*)",
       "headers": [
         { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" }
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=()"
+        }
       ]
     }
   ]
