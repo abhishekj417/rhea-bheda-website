@@ -8,10 +8,10 @@
     .then(response => response.ok ? response.json() : Promise.reject())
     .then(({ ready }) => {
       button.disabled = !ready;
-      button.textContent = ready ? 'Send enquiry' : 'Enquiries opening soon';
-      setStatus(ready ? 'Your message will be emailed securely to Coach Rhea Bheda.' : 'The enquiry channel is being connected. Please check back shortly.', ready ? 'ready' : 'unavailable');
+      button.textContent = ready ? 'Request my Clarity Call' : 'Enquiries opening soon';
+      setStatus(ready ? 'Your request will be emailed securely to Coach Rhea Bheda.' : 'Please message Rhea on WhatsApp or email her directly.', ready ? 'ready' : 'unavailable');
     })
-    .catch(() => { button.textContent = 'Enquiries temporarily unavailable'; setStatus('The enquiry channel could not be reached. Please try again later.', 'error'); });
+    .catch(() => { button.textContent = 'Form temporarily unavailable'; setStatus('Please message Rhea on WhatsApp or email her directly.', 'error'); });
   form.addEventListener('submit', async event => {
     event.preventDefault();
     if (!form.reportValidity() || button.disabled) return;
@@ -21,7 +21,7 @@
       const response = await fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(data) });
       const result = await response.json().catch(() => ({}));
       if (!response.ok) throw new Error(result.error || 'Your enquiry could not be sent.');
-      form.reset(); button.textContent = 'Enquiry sent'; setStatus('Thank you. Your message has been sent to Coach Rhea Bheda.', 'success');
+      form.reset(); button.textContent = 'Request sent'; setStatus('Thank you. Rhea will be in touch to arrange your Clarity Call.', 'success');
     } catch (error) {
       button.disabled = false; button.textContent = 'Try again'; setStatus(error.message || 'Your enquiry could not be sent. Please try again later.', 'error');
     }

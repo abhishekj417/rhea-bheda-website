@@ -1,4 +1,8 @@
 const icon=document.createElement("link");icon.rel="icon";icon.href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 rx=%2214%22 fill=%22%2317354a%22/><text x=%2232%22 y=%2241%22 text-anchor=%22middle%22 font-size=%2230%22 font-family=%22Georgia%22 fill=%22%23f1ca76%22>E3</text></svg>";document.head.append(icon);
+const contact={phone:"+971506075583",phoneDisplay:"+971 50 607 5583",email:"rheabheda97@gmail.com",whatsapp:"https://wa.me/971506075583?text="+encodeURIComponent("Hi Rhea, I'd like to book a free 30-minute Clarity Call."),booking:"contact.html#book"};
+const quotes=[["I could actually see the barriers I was holding onto. And the tools helped me so much.","Rakesh Shewale"],["Meditation was amazing. Felt peaceful and I feel free from my fears.","Mandar Patil"],["My mind became completely quiet. For half an hour, there were no racing thoughts, just peace.","Siddhi Mehta"]];
+const quote=quotes[Math.floor(Math.random()*quotes.length)];
+document.querySelectorAll("[data-whatsapp]").forEach(link=>link.href=contact.whatsapp);
 const pages=[["Home","index.html"],["About Rhea","about.html"],["Rhea’s E3 Framework","e3-method.html"],["Coaching & Programs","programs.html"],["Resources","wheel-of-life.html"],["Stories & Media","insights.html"],["Contact","contact.html"]];
 const current=location.pathname.split("/").pop()||"index.html";
 const nav=pages.map(([label,href])=>`<a href="${href}"${href===current?' class="active" aria-current="page"':""}>${label}</a>`).join("");
@@ -7,15 +11,16 @@ document.querySelector("[data-header]").innerHTML=`
 <header class="site-header"><div class="nav-wrap">
 <a class="brand" href="index.html" aria-label="Coach Rhea Bheda home"><strong>Coach Rhea Bheda</strong><span>Transformation Coach</span></a>
 <nav class="nav-links" id="site-nav" aria-label="Primary navigation">${nav}</nav>
-<a class="nav-cta" href="index.html#check-in">Find your starting point</a>
+<a class="nav-cta" href="${contact.booking}">Book a free Clarity Call</a>
 <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">☰</button>
 </div></header>`;
 document.querySelector("[data-footer]").innerHTML=`
-<section class="cta-strip" aria-labelledby="cta-title"><div class="section-inner"><div><h2 id="cta-title">Start with one honest reflection.</h2><p>Notice what keeps repeating, name what you need, and choose one useful next step.</p></div><a class="button" href="index.html#check-in">Find your starting point</a></div></section>
+<section class="cta-strip" aria-labelledby="cta-title"><div class="section-inner"><div><h2 id="cta-title">Book your free 30-minute Clarity Call.</h2><p>No pressure and no prep needed. You'll leave the call with one clear pattern to work on, whether or not we work together.</p><blockquote class="cta-quote">“${quote[0]}” <cite>${quote[1]}</cite></blockquote></div><div class="cta-actions"><a class="button" href="${contact.booking}">Book a free Clarity Call</a><a class="button whatsapp" href="${contact.whatsapp}" target="_blank" rel="noopener noreferrer">Message Rhea on WhatsApp</a></div></div></section>
 <footer class="site-footer"><div class="section-inner"><div class="footer-grid">
 <div><h3>Coach Rhea Bheda</h3><p>Transformation Coach, Yoga & Meditation Facilitator, and creator of the E3 Transformation Framework. Based in Dubai, working with clients globally.</p></div>
 <div><h3>Explore</h3><a href="about.html">About Rhea</a><a href="e3-method.html">Rhea’s E3 Framework</a><a href="programs.html">Coaching & Programs</a></div>
 <div><h3>Continue</h3><a href="wheel-of-life.html">Resources</a><a href="insights.html#client-stories">Client Stories</a><a href="insights.html">Insights & Media</a><a href="index.html#faq">FAQs</a><a href="contact.html">Contact</a></div>
+<div><h3>Contact</h3><a href="${contact.whatsapp}" target="_blank" rel="noopener noreferrer">WhatsApp ${contact.phoneDisplay}</a><a href="tel:${contact.phone}">Call ${contact.phoneDisplay}</a><a href="mailto:${contact.email}">${contact.email}</a></div>
 </div><div class="footer-bottom">© <span data-year></span> Coach Rhea Bheda. All rights reserved.</div></div></footer>`;
 document.querySelector("[data-year]").textContent=new Date().getFullYear();
 const toggle=document.querySelector(".menu-toggle");const menu=document.querySelector(".nav-links");
@@ -37,9 +42,22 @@ if(checkin){
     boundaries:{title:"Make room for an honest yes or no.",copy:"A boundary often begins by recognising what you feel and need. Through E3, you can meet the discomfort without judgment, own the choice available to you, and practise clearer language.",link:"e3-method.html#e3-practice"},
     direction:{title:"Listen for what matters beneath the momentum.",copy:"When life is full, clarity can get buried under expectations and habit. The Wheel of Life can help you see the wider pattern before you decide what deserves attention first.",link:"wheel-of-life.html#wheel-activity"}
   };
-  const showStep=step=>{patternStep.hidden=step!=="pattern";desireStep.hidden=step!=="desire";result.hidden=step!=="result";progress.forEach((item,index)=>item.classList.toggle("is-active",index===(step==="pattern"?0:step==="desire"?1:2)))};
+  const leadStep=checkin.querySelector('[data-checkin-step="lead"]');
+  const steps=["pattern","desire","lead","result"];
+  let selectedDesire="";let leadSent=false;
+  const showStep=step=>{patternStep.hidden=step!=="pattern";desireStep.hidden=step!=="desire";leadStep.hidden=step!=="lead";result.hidden=step!=="result";progress.forEach((item,index)=>item.classList.toggle("is-active",index===steps.indexOf(step)))};
+  const showResult=()=>{const item=patterns[selectedPattern];checkin.querySelector("[data-checkin-title]").textContent=item.title;checkin.querySelector("[data-checkin-copy]").textContent=`${item.copy} Your focus is ${selectedDesire}. Use that to guide your next step.`;checkin.querySelector("[data-checkin-link]").href=item.link;showStep("result")};
   checkin.querySelectorAll("[data-pattern]").forEach(button=>button.addEventListener("click",()=>{selectedPattern=button.dataset.pattern;showStep("desire")}));
-  checkin.querySelectorAll("[data-desire]").forEach(button=>button.addEventListener("click",()=>{const item=patterns[selectedPattern];const desire=button.dataset.desire;checkin.querySelector("[data-checkin-title]").textContent=item.title;checkin.querySelector("[data-checkin-copy]").textContent=`${item.copy} Your focus is ${desire}. Use that to guide your next step.`;checkin.querySelector("[data-checkin-link]").href=item.link;showStep("result")}));
+  checkin.querySelectorAll("[data-desire]").forEach(button=>button.addEventListener("click",()=>{selectedDesire=button.dataset.desire;if(leadSent)showResult();else{showStep("lead");leadStep.querySelector("input").focus()}}));
+  leadStep.addEventListener("submit",event=>{
+    event.preventDefault();
+    if(!leadStep.reportValidity())return;
+    const data=Object.fromEntries(new FormData(leadStep).entries());
+    const pattern=checkin.querySelector(`[data-pattern="${selectedPattern}"]`).textContent.trim();
+    leadSent=true;showResult();
+    fetch("/api/contact",{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify({...data,area:"Two-minute check-in",message:`Check-in answers\n\nWhat keeps happening: ${pattern}\nWhat would help most: ${selectedDesire}\nResult shown: ${patterns[selectedPattern].title}`})}).catch(()=>{});
+  });
+  checkin.querySelector("[data-checkin-lead-back]").addEventListener("click",()=>showStep("desire"));
   checkin.querySelector("[data-checkin-back]").addEventListener("click",()=>showStep("pattern"));
   checkin.querySelector("[data-checkin-reset]").addEventListener("click",()=>{selectedPattern="";showStep("pattern")});
 }

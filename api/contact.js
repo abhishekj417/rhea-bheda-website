@@ -2,7 +2,8 @@ const allowedAreas = new Set([
   'Clarity and direction',
   'Emotional patterns',
   'Boundaries and confidence',
-  'Personal growth'
+  'Personal growth',
+  'Two-minute check-in'
 ]);
 
 const allowedOrigins = new Set([
@@ -58,15 +59,19 @@ export default async function handler(req, res) {
   const email = clean(body.email, 254);
   const area = clean(body.area, 80);
   const message = clean(body.message, 6000);
+  const phone = clean(body.phone, 40);
   const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   if (!name || name.length > 120 || !emailValid || email.length > 254 ||
-      !allowedAreas.has(area) || !message || message.length > 6000) {
+      !allowedAreas.has(area) || !message || message.length > 6000 ||
+      phone.length > 40 || (phone && !/^[+\d][\d\s()-]{5,}$/.test(phone))) {
     return res.status(400).json({ error: 'Please check all four fields and try again.' });
   }
 
-  const text = `New coaching enquiry\n\nName: ${name}\nEmail: ${email}\nSupport area: ${area}\n\nMessage:\n${message}`;
-  const html = `<h2>New coaching enquiry</h2><p><strong>Name:</strong> ${escapeHtml(name)}</p>` +
+  const kind = area === 'Two-minute check-in' ? 'New check-in lead' : 'New coaching enquiry';
+  const text = `${kind}\n\nName: ${name}\nEmail: ${email}\nWhatsApp: ${phone || 'Not given'}\nSupport area: ${area}\n\nMessage:\n${message}`;
+  const html = `<h2>${kind}</h2><p><strong>Name:</strong> ${escapeHtml(name)}</p>` +
     `<p><strong>Email:</strong> ${escapeHtml(email)}</p>` +
+    `<p><strong>WhatsApp:</strong> ${escapeHtml(phone || 'Not given')}</p>` +
     `<p><strong>Support area:</strong> ${escapeHtml(area)}</p>` +
     `<p><strong>Message:</strong><br>${escapeHtml(message).replace(/\n/g, '<br>')}</p>`;
 
@@ -81,7 +86,7 @@ export default async function handler(req, res) {
         from: 'Coach Rhea Bheda <enquiries@coachrheabheda.com>',
         to: [process.env.CONTACT_TO_EMAIL],
         reply_to: email,
-        subject: `New coaching enquiry: ${area}`,
+        subject: `${kind}: ${area}`,
         text,
         html
       })
